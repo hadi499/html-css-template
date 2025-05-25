@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Mamma Roti Clone</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">
+          <img src="images/roti.png" alt="Logo" />
+        </div>
+        <div class="menu-toggle" id="menu-toggle" style="color: white">
+          &#9776;
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/">Beranda</a></li>
+          <li><a href="#">Giveway</a></li>
+          <li><a href="#">Lokasi</a></li>
+          <li><a href="#">Kemitraan</a></li>
+          <li><a href="#">Hubungi Kami</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main style="height: 100vh"></main>
+    <footer class="footer">
+      <div style="padding: 12px 0; background-color: #612701">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Contact us</h3>
+            <p>
+              Kami alga merelongar dan mencionatu Anda! Jiha Anda memiliki per
+              tanyaan, masakan atau login mengetahui telah banyak tentang produk
+              dan ispavan Manma Roti, jangan ragu untuk menghubungi kami ya!
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h3>Explore Mammaroti</h3>
+            <ul>
+              <li><a href="#">Baraneta</a></li>
+              <li><a href="#">Giveaway</a></li>
+              <li><a href="#">Lakasi</a></li>
+              <li><a href="#">Kamitraan</a></li>
+              <li><a href="#">Hubungi Kami</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Explore Mammaroti</h3>
+            <p>
+              Mamma Roti tidak hanya menyajihan Moidran Bura yang korat, tetapi
+              juga metavantkan pelatang kemitraan yang menient bugi Anda. Dragan
+              memiliki cabang 100+ yang terasbar di berbagai wilapain di
+              Indonesia, kami membaka pinta bagi Anda untuk menjadi bagian dari
+              lekuarga besar Manma Roti.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        Copyright © 2023 Webdesign. All rights reserved. developed by HpDev
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        toggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+
+          // Solusi: gunakan class active sebagai acuan
+          if (navLinks.classList.contains("active")) {
+            toggle.innerHTML = "&#10006;"; // ✖ dalam HTML entity
+          } else {
+            toggle.innerHTML = "&#9776;"; // ☰ dalam HTML entity
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

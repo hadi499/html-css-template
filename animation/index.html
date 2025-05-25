@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animasi Fullscreen Bergantian</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      .fullscreen-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+        color: white;
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+
+      /* Animasi 1: Gambar kanan, judul kiri */
+      .anim-1 {
+        flex-direction: row;
+      }
+
+      .anim-1-content {
+        display: flex;
+        width: 90%;
+        max-width: 1200px;
+      }
+
+      .anim-1-left {
+        flex: 1;
+        padding: 40px;
+        transform: translateX(-100px);
+        opacity: 0;
+        transition: all 1s ease 0.5s;
+      }
+
+      .anim-1-right {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100px);
+        opacity: 0;
+        transition: all 1s ease;
+      }
+
+      .anim-1-right img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+
+      /* Animasi 2: Dua gambar slide */
+      .anim-2 {
+        flex-direction: column;
+      }
+
+      .anim-2-title {
+        margin-bottom: 50px;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: all 1s ease;
+      }
+
+      .anim-2-slider {
+        display: flex;
+        gap: 50px;
+        position: relative;
+        left: 100vw;
+        transition: left 1.5s ease 0.5s;
+      }
+
+      .anim-2-slider img {
+        width: 35vw;
+        height: 50vh;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Animasi 3: 9 card grid */
+      .anim-3 {
+        flex-direction: column;
+      }
+
+      .anim-3-title {
+        margin-bottom: 40px;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.8s ease;
+      }
+
+      .anim-3-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        width: 80%;
+        max-width: 1000px;
+        position: relative;
+      }
+
+      .anim-3-card {
+        aspect-ratio: 1;
+        background-color: #333;
+        border-radius: 10px;
+        overflow: hidden; /* Tambahkan ini untuk memastikan gambar tidak keluar dari card */
+        opacity: 0;
+        transform: scale(0.3) rotate(30deg);
+        transition: all 0.6s ease;
+      }
+
+      .anim-3-card img {
+        width: 100%; /* Gambar mengisi lebar card */
+        height: 100%; /* Gambar mengisi tinggi card */
+        object-fit: cover; /* Gambar akan menutupi seluruh area tanpa terdistorsi */
+        display: block; /* Hilangkan spacing bawah */
+      }
+
+      .amazing-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        font-size: 8rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(218, 31, 31, 0.9),
+          0 0 20px rgba(218, 31, 31, 0.6), 0 0 30px rgba(218, 31, 31, 0.3);
+        opacity: 0;
+        transition: all 0.8s ease;
+        z-index: 10;
+        pointer-events: none; /* Agar tidak mengganggu interaksi dengan card */
+        text-align: center;
+      }
+
+      .amazing-text.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+
+      .active {
+        opacity: 1;
+        z-index: 10;
+      }
+
+      .show {
+        opacity: 1;
+        transform: translate(0) scale(1) rotate(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animasi 1 -->
+    <div class="fullscreen-animation anim-1">
+      <div class="anim-1-content">
+        <div class="anim-1-left">
+          <h1>Karya Pertama</h1>
+          <p>
+            Ini adalah deskripsi untuk animasi pertama. Gambar akan muncul dari
+            kanan, kemudian teks muncul dari kiri.
+          </p>
+        </div>
+        <div class="anim-1-right">
+          <img src="images/car.avif" alt="Karya Seni" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Animasi 2 -->
+    <div class="fullscreen-animation anim-2">
+      <div class="anim-2-title">
+        <h1>Dua Karya Menakjubkan</h1>
+        <p>Dua gambar ini akan masuk bersamaan dari sisi kanan layar</p>
+      </div>
+      <div class="anim-2-slider">
+        <img src="images/car.avif" alt="Alam" />
+        <img src="images/car2.avif" alt="Kota" />
+      </div>
+    </div>
+
+    <!-- Animasi 3 -->
+    <div class="fullscreen-animation anim-3">
+      <div class="anim-3-title"></div>
+      <div class="anim-3-grid">
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 1" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 2" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 3" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 4" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 5" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 6" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 7" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 8" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 8" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 8" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 8" />
+        </div>
+        <div class="anim-3-card">
+          <img src="images/myimage.jpg" alt="Karya 8" />
+        </div>
+
+        <div class="amazing-text">The Images</div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const animations = [
+          { element: document.querySelector(".anim-1"), duration: 3000 },
+          { element: document.querySelector(".anim-2"), duration: 3500 },
+          { element: document.querySelector(".anim-3"), duration: 6000 },
+        ];
+
+        let currentAnim = 0;
+
+        function startAnimation(index) {
+          if (index >= animations.length) {
+            currentAnim = 0;
+            resetAnimations();
+            startAnimation(0);
+            return;
+          }
+
+          const anim = animations[index];
+          anim.element.classList.add("active");
+
+          if (index === 0) {
+            setTimeout(() => {
+              anim.element.querySelector(".anim-1-right").classList.add("show");
+            }, 300);
+
+            setTimeout(() => {
+              anim.element.querySelector(".anim-1-left").classList.add("show");
+            }, 800);
+          } else if (index === 1) {
+            setTimeout(() => {
+              anim.element.querySelector(".anim-2-title").classList.add("show");
+            }, 300);
+
+            setTimeout(() => {
+              anim.element
+                .querySelector(".anim-2-slider")
+                .classList.add("show");
+              anim.element.querySelector(".anim-2-slider").style.left = "0";
+            }, 800);
+          } else if (index === 2) {
+            setTimeout(() => {
+              anim.element.querySelector(".anim-3-title").classList.add("show");
+            }, 300);
+
+            const cards = anim.element.querySelectorAll(".anim-3-card");
+            const delay = 100;
+            let cardsShown = 0;
+
+            cards.forEach((card, i) => {
+              setTimeout(() => {
+                card.classList.add("show");
+                cardsShown++;
+
+                if (cardsShown === cards.length) {
+                  setTimeout(() => {
+                    anim.element
+                      .querySelector(".amazing-text")
+                      .classList.add("show");
+                  }, 500);
+                }
+              }, delay * i + Math.random() * 200);
+            });
+          }
+
+          setTimeout(() => {
+            anim.element.classList.remove("active");
+            currentAnim++;
+            startAnimation(currentAnim);
+          }, anim.duration);
+        }
+
+        function resetAnimations() {
+          document.querySelectorAll(".fullscreen-animation").forEach((el) => {
+            el.classList.remove("active");
+          });
+
+          document.querySelector(".anim-1-left").classList.remove("show");
+          document.querySelector(".anim-1-right").classList.remove("show");
+          document.querySelector(".anim-2-title").classList.remove("show");
+          document.querySelector(".anim-2-slider").classList.remove("show");
+          document.querySelector(".anim-2-slider").style.left = "100vw";
+          document.querySelector(".anim-3-title").classList.remove("show");
+          document.querySelectorAll(".anim-3-card").forEach((card) => {
+            card.classList.remove("show");
+          });
+          document.querySelector(".amazing-text").classList.remove("show");
+        }
+
+        startAnimation(0);
+      });
+    </script>
+  </body>
+</html>
