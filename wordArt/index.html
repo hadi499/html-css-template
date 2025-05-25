@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+      .word-art-3d {
+        font-size: 60px;
+        font-weight: bold;
+        color: #ff5722;
+        text-shadow: 3px 3px 0 #ffc107, 6px 6px 0 #ff9800, 9px 9px 0 #ff5722;
+        font-family: "Arial Black", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .word-art-gradient {
+        font-size: 72px;
+        font-weight: bold;
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-family: "Impact", sans-serif;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .word-art-outline {
+        margin-bottom: 30px;
+        font-size: 80px;
+        font-weight: bold;
+        color: white;
+        -webkit-text-stroke: 3px #4285f4;
+        font-family: "Verdana", sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      .word-art-neon {
+        font-size: 70px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00de,
+          0 0 40px #ff00de, 0 0 80px #ff00de;
+        font-family: "Arial", sans-serif;
+        animation: neon-glow 1.5s ease-in-out infinite alternate;
+      }
+
+      @keyframes neon-glow {
+        from {
+          text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00de;
+        }
+        to {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00de,
+            0 0 40px #ff00de, 0 0 50px #ff00de;
+        }
+      }
+
+      .word-art-metal {
+        margin-top: 40px;
+        font-size: 65px;
+        font-weight: bold;
+        background: linear-gradient(to right, #999, #ddd, #999);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.8);
+        font-family: "Times New Roman", serif;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="word-art-3d">KATA KEREN</div>
+      <div class="word-art-gradient">GRADIENT TEXT</div>
+      <div class="word-art-outline">OUTLINE TEXT</div>
+      <div class="word-art-neon">NEON EFFECT</div>
+      <div class="word-art-metal">METALLIC TEXT</div>
+    </div>
+  </body>
+</html>
