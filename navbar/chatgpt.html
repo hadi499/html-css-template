@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar Smooth Scroll</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      height: 2000px;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    }
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease, padding 0.3s ease;
+      z-index: 1000;
+    }
+
+    .navbar.transparent {
+      background: rgba(255, 255, 255, 0); /* full transparent */
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .navbar.scrolled {
+      position: fixed;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px); /* smooth blur */
+      padding: 0.8rem 2rem; /* slight shrink */
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 1rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #00796b;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar" class="navbar transparent">
+    <div class="logo">Logo</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.remove("transparent");
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.add("transparent");
+        navbar.classList.remove("scrolled");
+      }
+    });
+  </script>
+</body>
+</html>
